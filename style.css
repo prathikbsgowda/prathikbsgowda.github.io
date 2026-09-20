@@ -332,6 +332,14 @@ section { padding: 90px 24px; }
 .cert-icon { font-size: 2rem; flex-shrink: 0; }
 .cert-card h3 { font-size: 0.93rem; font-weight: 700; color: var(--navy2); margin-bottom: 4px; }
 .cert-card p { font-size: 0.81rem; color: var(--muted); }
+.cert-link {
+  display: inline-block; margin-top: 8px;
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--navy); text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s, border-color 0.2s;
+}
+.cert-link:hover { color: var(--green); border-color: var(--green); }
 
 /* ── EDUCATION ── */
 #education { background: var(--white); }
