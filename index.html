@@ -1,1519 +1,606 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prathik B S - Data Scientist Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --text-color: #333;
-            --light-bg: #f9f9f9;
-            --white: #ffffff;
-            --gray: #f5f5f5;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --card-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-bg);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 1rem 0;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 1.5rem;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)),no-repeat center center/cover;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.2s;
-            animation-fill-mode: both;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background-color: var(--accent-color);
-            color: var(--white);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: background-color 0.3s, transform 0.3s;
-            margin: 0.5rem;
-            animation: fadeInUp 1s ease 0.4s;
-            animation-fill-mode: both;
-        }
-
-        .btn:hover {
-            background-color: #c0392b;
-            transform: translateY(-3px);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--white);
-        }
-
-        
-        .btn-outline:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary-color);
-        }
-
-        /* About Section */
-        .about {
-            background-color: var(--white);
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-        }
-
-        .about-text {
-            flex: 2;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .about-image img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: var(--card-shadow);
-        }
-
-        /* Skills Section */
-        .skills {
-            background-color: var(--light-bg);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-card {
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--card-shadow);
-        }
-
-        .skill-card i {
-            font-size: 3rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-
-        .skill-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .skill-card ul {
-            list-style-type: none;
-        }
-
-        .skill-card li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Experience Section - New Interactive Design */
-        .experience {
-            background-color: var(--white);
-        }
-
-        .experience-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .tab-button {
-            background-color: var(--gray);
-            color: var(--primary-color);
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .tab-button.active {
-            background-color: var(--secondary-color);
-            color: var(--white);
-        }
-
-        .tab-button:hover {
-            background-color: var(--secondary-color);
-            color: var(--white);
-        }
-
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .experience-card {
-            background-color: var(--light-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .experience-header {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .experience-header h3 {
-            font-size: 1.5rem;
-        }
-
-        .experience-date {
-            background-color: var(--accent-color);
-            color: var(--white);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        .experience-company {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin-top: 0.3rem;
-        }
-
-        .experience-content {
-            padding: 2rem;
-        }
-
-        .experience-description {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .experience-highlights {
-            margin-top: 1.5rem;
-        }
-
-        .experience-highlights h4 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .experience-highlights ul {
-            list-style-type: none;
-        }
-
-        .experience-highlights li {
-            margin-bottom: 0.8rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .experience-highlights li:before {
-            content: "▶";
-            position: absolute;
-            left: 0;
-            color: var(--secondary-color);
-        }
-
-        /* Download Resume Card */
-        .download-resume-card {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            max-width: 800px;
-            margin: 2rem auto 0;
-            text-align: center;
-            padding: 2rem;
-            color: var(--white);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .download-resume-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .download-resume-card i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--white);
-        }
-
-        .download-resume-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .download-resume-card p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .download-btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background-color: var(--accent-color);
-            color: var(--white);
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .download-btn:hover {
-            background-color: #c0392b;
-            transform: translateY(-3px);
-        }
-
-        /* Projects Section */
-        .projects {
-            background-color: var(--light-bg);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background-color: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--card-shadow);
-        }
-
-        .project-image {
-            height: 200px;
-            background-color: var(--gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 3rem;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .project-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tag {
-            background-color: var(--gray);
-            color: var(--primary-color);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-links a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color 0.3s;
-        }
-
-        .project-links a:hover {
-            color: var(--accent-color);
-        }
-
-        /* Publications Section */
-        .publications {
-            background-color: var(--white);
-        }
-
-        .publications-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .publication-item {
-            background-color: var(--light-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-        }
-
-        .publication-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--card-shadow);
-        }
-
-        .publication-year {
-            position: absolute;
-            top: 8.5rem;
-            right: 1.5rem;
-            background-color: var(--secondary-color);
-            color: var(--white);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .publication-title {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            margin-right: 0.5rem;
-            color: var(--primary-color);
-            font-style: italic;
-        }
-
-        .publication-authors {
-            color: #666;
-            margin-bottom: 0.5rem;
-        }
-
-        .publication-journal {
-            color: var(--secondary-color);
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .publication-link {
-            color: var(--accent-color);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .publication-link:hover {
-            color: var(--primary-color);
-        }
-
-        /* Certifications Section */
-        .certifications {
-            background-color: var(--light-bg);
-        }
-
-        .certifications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .certification-card {
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .certification-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--card-shadow);
-        }
-
-        .certification-icon {
-            font-size: 3rem;
-            color: var(--secondary-color);
-        }
-
-        .certification-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .certification-content p {
-            color: #666;
-        }
-
-        /* Education Section */
-        .education {
-            background-color: var(--white);
-        }
-
-        .education-card {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: var(--light-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .education-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .education-header h3 {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-        }
-
-        .education-date {
-            color: #666;
-            font-weight: bold;
-        }
-
-        .education-card p {
-            margin-bottom: 0.5rem;
-        }
-
-        .cgpa {
-            font-weight: bold;
-            color: var(--secondary-color);
-        }
-
-        /* Contact Section */
-        .contact {
-            background-color: var(--light-bg);
-            text-align: center;
-        }
-
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: var(--white);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            min-width: 200px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--card-shadow);
-        }
-
-        .contact-item i {
-            font-size: 2.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-
-        .contact-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .contact-item p {
-            color: #666;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary-color);
-            color: var(--white);
-            border-radius: 50%;
-            font-size: 1.5rem;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .social-links a:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-5px);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-color);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--secondary-color);
-            color: var(--white);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: background-color 0.3s, transform 0.3s;
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-5px);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .experience-tabs {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prathik B S — Data Scientist & ML Engineer</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo">Prathik B S</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Prathik B S</h1>
-            <p>Data Scientist & Machine Learning Engineer</p>
-            <a href="#about" class="btn">Learn More</a>
-            <a href="#contact" class="btn btn-outline">Get In Touch</a>
+<!-- NAV -->
+<header>
+  <nav>
+    <div class="logo">Prathik <span>B S</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="home">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span></span> Open to Opportunities</div>
+    <h1>
+      Prathik B S<br>
+      <span class="role-line"><span id="typedRole"></span><span class="cursor">|</span></span>
+    </h1>
+    <p class="hero-sub">Building intelligent systems — from multimodal RAG and LLM voice agents to production ML pipelines — that solve real-world problems at scale.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num" data-target="3.5" data-suffix="+">0</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat"><div class="stat-num" data-target="15" data-suffix="+">0</div><div class="stat-label">Projects</div></div>
+      <div class="stat"><div class="stat-num" data-target="40" data-suffix="+">0</div><div class="stat-label">Publications</div></div>
+      <div class="stat"><div class="stat-num" data-target="200" data-suffix="+">0</div><div class="stat-label">Citations</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-header reveal">
+
+      <h2 class="section-title">Who I Am</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <div class="about-img-border">
+          <div class="about-img-frame">
+            <img src="img/prathikk1.JPG" alt="Prathik B S">
+          </div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Data Scientist with 2 year 7 months of experience in building and deploying machine learning solutions using Python, SQL, and AWS. Proficient in model development with Pandas, scikit-learn, and LLMs, with hands-on experience in GenAI frameworks like RAG and MCP-Agentic.</p>
-                    <p>Skilled in deploying models via FastAPI, Django, and Hugging Face, and delivering scalable, production-ready AI systems aligned with business needs. Passionate about leveraging data to drive insights and create innovative solutions.</p>
-                    <a href="#contact" class="btn">Contact Me</a>
-                </div>
-                <div class="about-image">
-                    <img src="img/prathikk1.JPG" alt="Prathik B S">
-                </div>
-            </div>
+      </div>
+      <div class="about-text reveal">
+        <p>AI/ML Engineer with 3.5+ years of experience building end-to-end Generative AI, Computer Vision, and Machine Learning solutions for enterprise applications.</p>
+        <p>Specialized in multimodal RAG systems, LLM-based voice agents, advanced retrieval pipelines, and scalable AI microservices using Python, AWS, and modern GenAI frameworks.</p>
+        <p>Currently at Idyaite Technologies, delivering production-ready AI systems with a focus on cost optimization, low-latency inference, and real-world impact.</p>
+        <div class="about-chips">
+          <span class="chip">GenAI / RAG</span>
+          <span class="chip">Multimodal AI</span>
+          <span class="chip">Computer Vision</span>
+          <span class="chip">LLM Voice Agents</span>
+          <span class="chip">AWS</span>
+          <span class="chip">FastAPI</span>
         </div>
-    </section>
+        <br>
+        <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:8px;">Contact Me</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">My Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <i class="fas fa-code"></i>
-                    <h3>Programming</h3>
-                    <ul>
-                        <li>Python</li>
-                        <li>SQL</li>
-                        <li>R</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Data Analysis</h3>
-                    <ul>
-                        <li>Pandas</li>
-                        <li>NumPy</li>
-                        <li>EDA</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-robot"></i>
-                    <h3>Machine Learning</h3>
-                    <ul>
-                        <li>Scikit-learn</li>
-                        <li>TensorFlow</li>
-                        <li>LLM</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-chart-pie"></i>
-                    <h3>Data Visualization</h3>
-                    <ul>
-                        <li>Tableau</li>
-                        <li>Matplotlib</li>
-                        <li>Seaborn</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-cloud"></i>
-                    <h3>Cloud & Big Data</h3>
-                    <ul>
-                        <li>AWS</li>
-                        <li>PySpark</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-globe"></i>
-                    <h3>Web Development</h3>
-                    <ul>
-                        <li>Django</li>
-                        <li>RESTful APIs</li>
-                        <li>JavaScript</li>
-                        <li>HTML/CSS</li>
-                    </ul>
-                </div>
-            </div>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header reveal">
+
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">💻</div>
+        <h3>Programming</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">R</span>
         </div>
-    </section>
-
-    <!-- Experience Section - New Interactive Design -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Work Experience</h2>
-            
-            <div class="experience-tabs">
-                <button class="tab-button active" data-tab="ciods">CIODS</button>
-                <button class="tab-button" data-tab="ks">Knowledge Solutions</button>
-                <button class="tab-button" data-tab="Impelsys">Impelsys</button>
-            </div>
-            
-            <div class="tab-content active" id="ciods">
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <div>
-                            <h3>Data Scientist</h3>
-                            <p class="experience-company">Centre for Integrative Omics Data Science (CIODS)</p>
-                        </div>
-                        <div class="experience-date">Feb 2023 – Present</div>
-                    </div>
-                    <div class="experience-content">
-                        <p class="experience-description">Leading the development and deployment of machine learning solutions for bioinformatics research and data analysis.</p>
-                        
-                        <div class="experience-highlights">
-                            <h4>Key Responsibilities & Achievements:</h4>
-                            <ul>
-                                <li>Built and deployed ML models (regression, classification, time series) using Python, scikit-learn, and Prophet for forecasting tasks.</li>
-                                <li>Implemented GenAI pipelines including RAG and MCP-Agentic systems for intelligent information retrieval and planning.</li>
-                                <li>Developed and deployed a RAG-based chatbot using LLMs, FAISS, and LangChain for domain-specific Q&A.</li>
-                                <li>Performed data extraction, cleaning, and feature engineering using SQL and Python to optimize model performance.</li>
-                                <li>Deployed ML and LLM models using FastAPI, Django, and Hugging Face for real-time production use cases.</li>
-                                <li>Built CI/CD pipelines with GitHub Actions and Docker to automate model training, testing, and deployment.</li>
-                                <li>Monitored deployed models for drift, scheduled retraining, and maintained version control for reproducibility.</li>
-                                <li>Collaborated with cross-functional teams to align AI solutions with business goals and presented actionable insights to stakeholders.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-content" id="Impelsys">
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <div>
-                            <h3>Web Developer</h3>
-                            <p class="experience-company">Impelsys</p>
-                        </div>
-                        <div class="experience-date">Aug 2022 – Sep 2022</div>
-                    </div>
-                        <div class="experience-content">
-                            <p class="experience-description">
-                                Completed a 2-month web development internship at Impelsys, contributing to backend development and project deployment for web applications.
-                            </p>
-                            
-                            <div class="experience-highlights">
-                                <h4>Key Responsibilities & Achievements:</h4>
-                                <ul>
-                                    <li>Developed backend functionalities using Java and JavaServer Pages (JSP) for web applications.</li>
-                                    <li>Designed and implemented database interactions using SQL to manage application data efficiently.</li>
-                                    <li>Worked on the project <strong>Online Assets Management</strong>, ensuring smooth asset tracking and user management.</li>
-                                    <li>Collaborated with team members to integrate frontend and backend modules seamlessly.</li>
-                                    <li>Tested and debugged application components to ensure reliable and scalable deployment.</li>
-                                    <li>Gained hands-on experience with web development frameworks, server-side scripting, and application deployment processes.</li>
-                                </ul>
-                            </div>
-                        </div>
-                </div>
-            </div>
-            <div class="tab-content" id="ks">
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <div>
-                            <h3>Data Science Intern</h3>
-                            <p class="experience-company">Knowledge Solutions India (Affiliated with Microsoft)</p>
-                        </div>
-                        <div class="experience-date">Feb 2021 – Apr 2021</div>
-                    </div>
-                    <div class="experience-content">
-                        <p class="experience-description">Gained hands-on experience in developing machine learning models and data analysis techniques in a professional environment.</p>
-                        
-                        <div class="experience-highlights">
-                            <h4>Key Responsibilities & Achievements:</h4>
-                            <ul>
-                                <li>Developed machine learning models for data analysis and prediction tasks, improving accuracy by 15%.</li>
-                                <li>Conducted exploratory data analysis (EDA) to uncover trends and patterns, facilitating data-driven decision-making.</li>
-                                <li>Created visualizations using Matplotlib and Seaborn to communicate findings effectively to stakeholders.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Download Resume Card -->
-            <div class="download-resume-card">
-                <i class="fas fa-file-download"></i>
-                <h3>Download My Resume</h3>
-                <p>Get a comprehensive overview of my skills, experience, and qualifications in a downloadable PDF format.</p>
-                <button class="download-btn" id="downloadResumeBtn">Download Resume</button>
-            </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">📊</div>
+        <h3>Data Analysis</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">EDA</span>
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>RAG-Based Chatbot</h3>
-                        <p>Developed a domain-specific Q&A chatbot using LLMs, FAISS, and LangChain for intelligent information retrieval.</p>
-                        <div class="project-tags">
-                            <span class="tag">LLM</span>
-                            <span class="tag">FAISS</span>
-                            <span class="tag">LangChain</span>
-                            <span class="tag">FastAPI</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/prathikbsgowda/rag_offline_chatbot"><i class="fab fa-github"></i> GitHub</a>
-                            <!-- <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a> -->
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>GenAI Pipeline</h3>
-                        <p>Implemented GenAI pipelines including RAG and MCP-Agentic systems for intelligent information retrieval and planning.</p>
-                        <div class="project-tags">
-                            <span class="tag">GenAI</span>
-                            <span class="tag">RAG</span>
-                            <span class="tag">MCP-Agentic</span>
-                            <span class="tag">AWS</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/prathikbsgowda/Doc_MCP"><i class="fab fa-github"></i> GitHub</a>
-                            <!-- <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Named Entity Recognition (NER)</h3>
-                        <p>Developed a lightweight NER system with feature engineering, logistic regression, and FastAPI deployment.</p>
-                        <div class="project-tags">                               
-                                <span class="tag">Feature Engineering</span>
-                                <span class="tag">Scikit-learn</span>
-                                <span class="tag">FastAPI</span>
-                                <span class="tag">Python</span>
-                                <span class="tag">REST API</span>
-                                <span class="tag">NLP</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/prathikbsgowda/ner_entity"><i class="fab fa-github"></i> GitHub</a>
-                            <!-- <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a> -->
-                        </div>
-                    </div>
-                    </div>
-
-               
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3> Domain specific RAG chatbot</h3>
-                        <p>A Domain-Specific RAG Chatbot provides accurate answers using data from a specific domain.</p>
-                        <div class="project-tags">                               
-                                <span class="tag">Python</span>
-                                <span class="tag">LLM</span>
-                                <span class="tag">RAG</span>
-                                <span class="tag">FAISS</span>
-                                <span class="tag">Streamlit</span>
-                                <span class="tag">Docker</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/prathikbsgowda/Domain_specific_RAG_chatbot"><i class="fab fa-github"></i> GitHub</a>
-                            <!-- <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a> -->
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Band-Aid Overlay on Arm – Computer Vision</h3>
-                        <p>Built a computer vision tool to overlay band-aids on arms using Mediapipe landmarks and skin-color segmentation methods.</p>
-                        <div class="project-tags">                               
-                                <span class="tag">Computer Vision</span>
-                                <span class="tag">OpenCV</span>
-                                <span class="tag">Mediapipe</span>
-                                <span class="tag">Image Processing</span>
-                                <span class="tag">HSV Segmentation</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/prathikbsgowda/Band_aid_CV"><i class="fab fa-github"></i> GitHub</a>
-                            <!-- <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a> -->
-                        <!-- </div> -->
-                    <!-- </div> -->
-                <!-- </div>  -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Healthcare Analytics SQL Project</h3>
-                        <p>Built a hospital analytics system using SQL to track patient visits, doctor performance, diagnoses, and hospital operations.</p>
-                        <div class="project-tags">                               
-                                <span class="tag">SQL</span>
-                                <span class="tag">PostgreSQL</span>
-                                <span class="tag">MySQL</span>
-                                <span class="tag">Data Analysis</span>
-                                <span class="tag">Database Design</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/prathikbsgowda/-Hospital-Patient-Analytics-System"><i class="fab fa-github"></i> GitHub</a>
-                            <!-- <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Trade Analysis Platform</h3>
-                        <p>Built a containerized trade analysis platform using FastAPI, Django, and Gemini AI for real-time market insights and management.</p>
-                        <div class="project-tags">                               
-                                <span class="tag">FastAPI</span>
-                                <span class="tag">Django</span>
-                                <span class="tag">Docker</span>
-                                <span class="tag">Python</span>
-                                <span class="tag">LLMs</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/prathikbsgowda/Trade_Sector_Analysis"><i class="fab fa-github"></i> GitHub</a>
-                            <!-- <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-car"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Car Price Prediction</h3>
-                        <p>FastAPI-based ML API predicting used car prices with a Random Forest model, Dockerized and deployed on Hugging Face Spaces.</p>
-                        <div class="project-tags">                               
-                                <span class="tag">FastAPI</span>
-                                <span class="tag">Django</span>
-                                <span class="tag">scikit-learn</span>
-                                <span class="tag">Python</span>
-                                <span class="tag">Machine Learning</span>
-                                <span class="tag">Automotive Analytics</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/prathikbsgowda/car-price-api"><i class="fab fa-github"></i> GitHub</a>
-                            <!-- <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Customer Churn Prediction</h3>
-                        <p>FastAPI-based ML API predicting customer churn using a Random Forest model, Dockerized for consistent deployment and testing.</p>
-                        <div class="project-tags">                               
-                                <span class="tag">FastAPI</span>
-                                <span class="tag">Django</span>
-                                <span class="tag">Docker</span>
-                                <span class="tag">Python</span>
-                                <span class="tag">Pytest</span>
-                                <span class="tag">Data Analysis</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/prathikbsgowda/churn_api_project"><i class="fab fa-github"></i> GitHub</a>
-                            <!-- <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Kinase-Substrate Network Visualization</h3>
-                        <p>Web-based tool visualizing kinase-substrate networks with Cytoscape.js, supporting interactive graphs and downloadable network images.</p>
-                        <div class="project-tags">                               
-                                <span class="tag">JavaScript</span>
-                                <span class="tag">Cytoscape.js</span>
-                                <span class="tag">Network Visualization</span>
-                                <span class="tag">Bioinformatics</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/prathikbsgowda/cytoscape_network_generator"><i class="fab fa-github"></i> GitHub</a>
-                            <!-- <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🤖</div>
+        <h3>AI / ML</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Scikit-learn</span>
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">LLM</span>
+          <span class="skill-tag">RAG</span>
+          <span class="skill-tag">MCP-Agentic</span>
+          <span class="skill-tag">Computer Vision</span>
+          <span class="skill-tag">OCR</span>
+          <span class="skill-tag">Multimodal AI</span>
         </div>
-    </section>
-
-    <!-- Publications Section -->
-    <section id="publications" class="publications">
-        <div class="container">
-            <h2 class="section-title">Publications</h2>
-            <div class="publications-container">
-
-                <div class="publication-item">
-                    <div class="publication-year">2025</div>
-                    <h3 class="publication-title">Orchestrating intracellular calcium signaling Cascades by Phosphosite-Centric regulatory network: A comprehensive analysis on kinases CAMKK1 and CAMKK2</h3>
-                    <p class="publication-authors">Althaf Mahin, Athira Perunelly Gopalakrishnan, Mukhtar Ahmed, Mahammed Nisar, Levin John,<b> Prathik Basthikoppa Shivamurthy</b>, Samseera Ummar, Susmi Varghese, Prashant Kumar Modi, Vinitha Ramanath Pai, Thottethodi Subrahmanya Keshava Prasad, Rajesh Raju</p>
-                    <p class="publication-journal">OMICS: A Journal of Integrative Biology</p>
-                    <a href="https://www.liebertpub.com/doi/abs/10.1089/omi.2024.0196" class="publication-link"><i class="fas fa-external-link-alt"></i> View Publication</a>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-year">2025</div>
-                    <h3 class="publication-title">Positional distribution and conservation of major phosphorylated sites in the human kinome</h3>
-                    <p class="publication-authors">Athira Perunelly Gopalakrishnan,<b> Prathik Basthikoppa Shivamurthy</b>, Mukhtar Ahmed, Samseera Ummar, Poornima Ramesh, Sonet Daniel Thomas, Althaf Mahin, Mahammad Nisar, Sowmya Soman, Yashwanth Subbannayya, Rajesh Raju</p>
-                    <p class="publication-journal">Frontiers in Molecular Biosciences</p>
-                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12015135/" class="publication-link"><i class="fas fa-external-link-alt"></i> View Publication</a>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-year">2025</div>
-                    <h3 class="publication-title">Theranostic Target NSUN2, a C(5)-Methyltransferase, Phospho-Regulatory Network Uncovered with Systematic Assembly of 805 Datasets</h3>
-                    <p class="publication-authors">Fathimathul Lubaba, Mejo George, Mukhtar Ahmed, Levin John, Athira Perunelly Goplakrishnan,<b>Prathik Basthikoppa Shivamurthy</b>, Susmi Varghese, Priyanka Pahal, Mahammad Nisar, Poornima Ramesh, Inamul Hasan Madar, Rajesh Raju</p>
-                    <p class="publication-journal">OMICS: A Journal of Integrative Biology</p>
-                    <a href="https://www.liebertpub.com/doi/abs/10.1089/omi.2025.0025" class="publication-link"><i class="fas fa-external-link-alt"></i> View Publication</a>
-                </div>
-                    <div class="publication-item">
-                    <div class="publication-year">2025</div>
-                    <h3 class="publication-title">Kinase regulation of DNA polymerase alpha-primase (polα-primase) complex: Inference from decade-long global phosphoproteomes</h3>
-                    <p class="publication-authors">Aromal Monipillil Ajayakumar, Athira Perunelly Gopalakrishnan, Amal Fahma, Althaf Mahin, Suhail Subair,<b>Prathik Basthikoppa Shivamurthy</b>, Poornima Ramesh, Rajesh Raju</p>
-                    <p class="publication-journal">Elsevier</p>
-                    <a href="https://www.sciencedirect.com/science/article/abs/pii/S2452014425001852" class="publication-link"><i class="fas fa-external-link-alt"></i> View Publication</a>
-                </div>
-                    <div class="publication-item">
-                    <div class="publication-year">2025</div>
-                    <h3 class="publication-title">Phosphoproteomic insights into GFPT2-Associated cellular phospho-signaling networks</h3>
-                    <p class="publication-authors">Shuvechha Chakraborty, Althaf Mahin,<b>Prathik Basthikoppa Shivamurthy</b>, Mukhtar Ahmed, Athira Perunelly Gopalakrishnan, Levin John, Susmi Varghese, Poornima Ramesh, Rajesh Raju</p>
-                    <p class="publication-journal">Biochemistry and Biophysics Reports</p>
-                    <a href="https://www.sciencedirect.com/science/article/pii/S2405580825002833" class="publication-link"><i class="fas fa-external-link-alt"></i> View Publication</a>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-year">2025</div>
-                    <h3 class="publication-title">Decoding ATXN2 Phosphocode: Structural Insights and Therapeutic Opportunities in Disease</h3>
-                    <p class="publication-authors">Apoorva Pai Kalasa Anil Kumar, Suhail Subair,<b>Prathik Basthikoppa Shivamurthy</b>, Samseera Ummar, Athira C Rajeev, Rajesh Raju</p>
-                    <p class="publication-journal">Springer US</p>
-                    <a href="https://link.springer.com/article/10.1007/s10930-025-10287-4" class="publication-link"><i class="fas fa-external-link-alt"></i> View Publication</a>
-                </div>     
-                 <div class="publication-item">
-                    <div class="publication-year">2025</div>
-                    <h3 class="publication-title">Mapping Cophosphoregulation Networks Linked to Transcriptional Regulator Bromodomain-Containing Protein 4</h3>
-                    <p class="publication-authors">Anjana C Lalu, Fathimathul Lubaba, Athira Perunelly Gopalakrishnan, Althaf Mahin, Suhail Subair,<b>Prathik Basthikoppa Shivamurthy</b>, Athira C Rajeev, Rajesh Raju</p>
-                    <p class="publication-journal">DNA and Cell Biology</p>
-                    <a href="https://www.liebertpub.com/doi/abs/10.1089/dna.2025.0088" class="publication-link"><i class="fas fa-external-link-alt"></i> View Publication</a>
-                </div>      
-                 <div class="publication-item">
-                    <div class="publication-year">2025</div>
-                    <h3 class="publication-title">Unravelling the phosphoregulatory network of protein kinase C-delta (PKC-δ)</h3>
-                    <p class="publication-authors">Darshan Hebbal Raghu, Leona Dcunha, Mukhtar Ahmed, Amal Fahma, Althaf Mahin, Athira Perunelly Gopalakrishnan, Levin John, Suhail Subair,<b>Prathik Basthikoppa Shivamurthy</b>, Susmi Varghese, Samseera Ummar, Mahammad Nisar, Poornima Ramesh, Inamul Hasan Madar, Rajesh Raju</p>
-                    <p class="publication-journal">Elsevier</p>
-                    <a href="https://www.sciencedirect.com/science/article/abs/pii/S1570963925000184" class="publication-link"><i class="fas fa-external-link-alt"></i> View Publication</a>
-                </div>  
-                <div class="publication-item">
-                    <div class="publication-year">2024</div>
-                    <h3 class="publication-title">Elucidating the phosphoregulatory network of predominant phosphosite in AXL kinase: An integrative bioinformatic approach  </h3>
-                    <p class="publication-authors">Levin John, Mejo George, Leona Dcunha, Mahammad Nisar, Diya Sanjeev, Priyanka Pahal, Athira Perunelly Gopalakrishnan,<b>Prathik Basthikoppa Shivamurthy</b>, Sourav Sreelan, Tanuja Yandigeri, Saptami Kanekar, Rajesh Raju, Rex Devasahayam Arokia Balaya</p>
-                    <p class="publication-journal">Springer</p>
-                    <a href="https://link.springer.com/article/10.1007/s42485-024-00147-7" class="publication-link"><i class="fas fa-external-link-alt"></i> View Publication</a>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-year">2024</div>
-                    <h3 class="publication-title">A global phosphosite-correlated network map of Thousand And One Kinase 1 (TAOK1)</h3>
-                    <p class="publication-authors">Pahal Priyanka, Athira Perunelly Gopalakrishnan, Mahammad Nisar,<b>Prathik Basthikoppa Shivamurthy</b>,...</p>
-                    <p class="publication-journal">ScienceDirect</p>
-                    <a href="https://www.sciencedirect.com/science/article/abs/pii/S1357272524000499" class="publication-link"><i class="fas fa-external-link-alt"></i> View Publication</a>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-year">2023</div>
-                    <h3 class="publication-title">Crop Maturity Detection and Automatic Sprinkler Irrigation using IoT and Machine Learning</h3>
-                    <p class="publication-authors">Vijendra, Manjula Basava Raj, Akshay, Charan, <b>Prathik B S</b></p>
-                    <p class="publication-journal">HBRP</p>
-                    <a href="#" class="publication-link"><i class="fas fa-external-link-alt"></i> View Publication</a>
-                </div>                    
-            </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">📈</div>
+        <h3>Data Visualization</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">Matplotlib</span>
+          <span class="skill-tag">Seaborn</span>
         </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications">
-        <div class="container">
-            <h2 class="section-title">Certifications</h2>
-            <div class="certifications-grid">
-                <div class="certification-card">
-                    <div class="certification-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <div class="certification-content">
-                        <h3>SQL (Advanced)</h3>
-                        <p>HackerRank</p>
-                    </div>
-                </div>
-                <div class="certification-card">
-                    <div class="certification-icon">
-                        <i class="fas fa-python"></i>
-                    </div>
-                    <div class="certification-content">
-                        <h3>Introduction to Data Science in Python</h3>
-                        <p>University of Michigan</p>
-                    </div>
-                </div>
-                <div class="certification-card">
-                    <div class="certification-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <div class="certification-content">
-                        <h3>Tableau Training</h3>
-                        <p>Simplilearn</p>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">☁️</div>
+        <h3>Cloud & Big Data</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">AWS (Lambda, S3, GPU)</span>
+          <span class="skill-tag">PySpark</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">GitHub Actions</span>
         </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-card">
-                <div class="education-header">
-                    <h3>Bachelor of Information Science and Engineering</h3>
-                    <div class="education-date">2019 - 2023</div>
-                </div>
-                <p>Visvesvaraya Technological University</p>
-                <p class="cgpa">CGPA: 8.98</p>
-            </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🌐</div>
+        <h3>Web & Deployment</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">Django</span>
+          <span class="skill-tag">Hugging Face</span>
+          <span class="skill-tag">Twilio</span>
+          <span class="skill-tag">Deepgram</span>
+          <span class="skill-tag">REST APIs</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>Location</h3>
-                        <p>Shimoga, Karnataka, India</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email</h3>
-                        <p>prathikbsgowda@gmail.com</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <h3>Phone</h3>
-                        <p>+91 9482810657</p>
-                    </div>
-                </div>
-                <div class="social-links">
-                    <a href="https://linkedin.com/in/prathik-b-s-a80b3521a" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/prathikbsgowda" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="mailto:prathikbsgowda@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header reveal">
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Prathik B S. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
+      <h2 class="section-title">Work Experience</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="exp-tabs reveal">
+      <button class="tab-btn active" data-tab="idyaite">Idyaite Technologies Pvt. Ltd.</button>
+      <button class="tab-btn" data-tab="indosakura">Indo-Sakura Software Pvt. Ltd. Japan K.K.</button>
+      <button class="tab-btn" data-tab="ciods">CIODS</button>
+      <button class="tab-btn" data-tab="ks">Knowledge Solutions</button>
     </div>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+    <div class="tab-panel active" id="idyaite">
+      <div class="exp-card reveal">
+        <div class="exp-header">
+          <div>
+            <h3>AI/ML Engineer</h3>
+            <p class="exp-company">Idyaite Technologies Pvt. Ltd.</p>
+          </div>
+          <span class="exp-date">Jan 2026 – Present</span>
+        </div>
+        <div class="exp-body">
+          <p>Developing end-to-end Generative AI and Computer Vision pipelines for enterprise automation and intelligent data processing.</p>
+          <ul>
+            <li>Built multimodal RAG solutions for interpreting complex 2D hydraulic engineering diagrams and technical documents.</li>
+            <li>Designed advanced RAG systems using vector databases, dense/sparse retrieval, reranking, and context compression.</li>
+            <li>Developed multilingual AI voice agents using Twilio, Claude Haiku 3.5, Sarvam AI, and Deepgram with sub-second STT→LLM→TTS latency.</li>
+            <li>Deployed and optimized Qwen 2.5 (7B) models on AWS GPU infrastructure for scalable AI inference.</li>
+            <li>Implemented cost optimization via dynamic model routing, selective retrieval, context compression, and response caching.</li>
+            <li>Built intelligent video frame extraction pipelines using motion detection, blur scoring, and frame quality evaluation.</li>
+            <li>Designed scalable RESTful AI microservices using FastAPI and face recognition systems for attendance and identity verification.</li>
+            <li>Built automated PDF, DOCX, and Excel comparison systems using Python libraries.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-        // Download Resume functionality
-        document.getElementById('downloadResumeBtn').addEventListener('click', function() {
-            // Create a link to the resume file
-            const link = document.createElement('a');
-            link.href = 'docs/Prathik-CV.pdf';
-            link.download = 'Prathik-CV.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Show notification
-            const notification = document.createElement('div');
-            notification.style.position = 'fixed';
-            notification.style.bottom = '20px';
-            notification.style.right = '20px';
-            notification.style.backgroundColor = '#2c3e50';
-            notification.style.color = 'white';
-            notification.style.padding = '15px';
-            notification.style.borderRadius = '5px';
-            notification.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
-            notification.style.zIndex = '1000';
-            notification.innerHTML = '<i class="fas fa-check-circle" style="margin-right: 10px;"></i>Resume download started!';
-            
-            document.body.appendChild(notification);
-            
-            // Remove notification after 3 seconds
-            setTimeout(() => {
-                notification.style.opacity = '0';
-                notification.style.transition = 'opacity 0.5s';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 500);
-            }, 3000);
-        });
+    <div class="tab-panel" id="indosakura">
+      <div class="exp-card reveal">
+        <div class="exp-header">
+          <div>
+            <h3>Data Scientist</h3>
+            <p class="exp-company">Indo-Sakura Software Pvt. Ltd. Japan K.K.</p>
+          </div>
+          <span class="exp-date">Nov 2025 – Jan 2026</span>
+        </div>
+        <div class="exp-body">
+          <p>Designed and deployed end-to-end AI/ML and GenAI solutions for multilingual (English–Japanese) enterprise applications.</p>
+          <ul>
+            <li>Built high-performance RAG systems using optimized embeddings, FAISS vector stores, and precision retrieval for document Q&A.</li>
+            <li>Developed MCP-based agentic AI systems for autonomous planning, document intelligence, and workflow automation.</li>
+            <li>Reduced LLM latency using quantization, batching, and caching techniques for real-time production workloads.</li>
+            <li>Implemented OCR and multilingual document text extraction pipelines for PDFs and scanned images.</li>
+            <li>Utilized AWS (Lambda, S3) and PySpark for scalable distributed data processing and large-scale model deployment.</li>
+            <li>Collaborated with product and engineering teams to convert business needs into secure, production-ready AI systems.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-        // Experience tabs functionality
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabContents = document.querySelectorAll('.tab-content');
+    <div class="tab-panel" id="ciods">
+      <div class="exp-card reveal">
+        <div class="exp-header">
+          <div>
+            <h3>Data Scientist</h3>
+            <p class="exp-company">Centre for Integrative Omics Data Science (CIODS)</p>
+          </div>
+          <span class="exp-date">Feb 2023 – Nov 2025</span>
+        </div>
+        <div class="exp-body">
+          <p>Built and deployed ML and GenAI solutions for bioinformatics research, predictive analytics, and financial risk detection.</p>
+          <ul>
+            <li>Built and deployed ML models using Python, scikit-learn, and Prophet for forecasting and predictive analytics.</li>
+            <li>Developed GenAI solutions including RAG pipelines and MCP-agentic systems using LLMs, LangChain, and FAISS.</li>
+            <li>Deployed LLM-based applications via FastAPI, Django, and Hugging Face with CI/CD using GitHub Actions and Docker.</li>
+            <li>Developed financial risk and anomaly detection models improving detection accuracy by 15%.</li>
+            <li>Performed data extraction, feature engineering, and optimization using SQL, Pandas, and NumPy for large-scale datasets.</li>
+            <li>Monitored deployed models for drift, scheduled retraining, and applied version control for reproducibility.</li>
+            <li>Collaborated with cross-functional teams to translate analytical insights into business strategy and risk-mitigation decisions.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons and contents
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-                
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                // Show corresponding content
-                const tabId = button.getAttribute('data-tab');
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
+    <div class="tab-panel" id="ks">
+      <div class="exp-card reveal">
+        <div class="exp-header">
+          <div>
+            <h3>Data Science Intern</h3>
+            <p class="exp-company">Knowledge Solutions India (Affiliated with Microsoft)</p>
+          </div>
+          <span class="exp-date">Feb 2021 – Apr 2021</span>
+        </div>
+        <div class="exp-body">
+          <p>Gained hands-on experience in developing ML models and data analysis in a professional environment.</p>
+          <ul>
+            <li>Developed ML models for data analysis and prediction tasks, improving accuracy by 15%.</li>
+            <li>Conducted EDA to uncover trends and patterns for data-driven decision-making.</li>
+            <li>Created visualizations using Matplotlib and Seaborn to communicate findings to stakeholders.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-        // Back to top button functionality
-        const backToTopButton = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
+    <div class="resume-cta reveal">
+      <div class="resume-cta-text">
+        <h3>📄 Download My Resume</h3>
+        <p>Get a full overview of my skills, experience, and qualifications.</p>
+      </div>
+      <button class="btn-primary" id="downloadBtn">Download Resume</button>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="project-top">💬</div>
+        <div class="project-body">
+          <h3>RAG-Based Chatbot</h3>
+          <p>Domain-specific Q&A chatbot using LLMs, FAISS, and LangChain for intelligent information retrieval.</p>
+          <div class="project-tags">
+            <span class="ptag">LLM</span><span class="ptag">FAISS</span><span class="ptag">LangChain</span><span class="ptag">FastAPI</span>
+          </div>
+          <a href="https://github.com/prathikbsgowda/rag_offline_chatbot" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-top">🧠</div>
+        <div class="project-body">
+          <h3>GenAI Pipeline</h3>
+          <p>RAG and MCP-Agentic systems for intelligent information retrieval and planning.</p>
+          <div class="project-tags">
+            <span class="ptag">GenAI</span><span class="ptag">RAG</span><span class="ptag">MCP-Agentic</span><span class="ptag">AWS</span>
+          </div>
+          <a href="https://github.com/prathikbsgowda/Doc_MCP" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-top">🏷️</div>
+        <div class="project-body">
+          <h3>Named Entity Recognition (NER)</h3>
+          <p>Lightweight NER system with feature engineering, logistic regression, and FastAPI deployment.</p>
+          <div class="project-tags">
+            <span class="ptag">NLP</span><span class="ptag">Scikit-learn</span><span class="ptag">FastAPI</span><span class="ptag">Python</span>
+          </div>
+          <a href="https://github.com/prathikbsgowda/ner_entity" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-top">🗄️</div>
+        <div class="project-body">
+          <h3>Domain Specific RAG Chatbot</h3>
+          <p>Accurate domain-specific answers using RAG, FAISS, Streamlit, and Docker.</p>
+          <div class="project-tags">
+            <span class="ptag">RAG</span><span class="ptag">FAISS</span><span class="ptag">Streamlit</span><span class="ptag">Docker</span>
+          </div>
+          <a href="https://github.com/prathikbsgowda/Domain_specific_RAG_chatbot" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-top">🏥</div>
+        <div class="project-body">
+          <h3>Healthcare Analytics SQL</h3>
+          <p>Hospital analytics system using SQL to track patient visits, doctor performance, and operations.</p>
+          <div class="project-tags">
+            <span class="ptag">SQL</span><span class="ptag">PostgreSQL</span><span class="ptag">MySQL</span><span class="ptag">Data Analysis</span>
+          </div>
+          <a href="https://github.com/prathikbsgowda/-Hospital-Patient-Analytics-System" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-top">📉</div>
+        <div class="project-body">
+          <h3>Trade Analysis Platform</h3>
+          <p>Containerized trade analysis platform using FastAPI, Django, and Gemini AI for market insights.</p>
+          <div class="project-tags">
+            <span class="ptag">FastAPI</span><span class="ptag">Django</span><span class="ptag">Docker</span><span class="ptag">LLMs</span>
+          </div>
+          <a href="https://github.com/prathikbsgowda/Trade_Sector_Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-top">🚗</div>
+        <div class="project-body">
+          <h3>Car Price Prediction</h3>
+          <p>FastAPI ML API predicting used car prices with Random Forest, Dockerized on Hugging Face Spaces.</p>
+          <div class="project-tags">
+            <span class="ptag">FastAPI</span><span class="ptag">scikit-learn</span><span class="ptag">Docker</span><span class="ptag">ML</span>
+          </div>
+          <a href="https://github.com/prathikbsgowda/car-price-api" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-top">👥</div>
+        <div class="project-body">
+          <h3>Customer Churn Prediction</h3>
+          <p>FastAPI ML API predicting customer churn using Random Forest, Dockerized for deployment.</p>
+          <div class="project-tags">
+            <span class="ptag">FastAPI</span><span class="ptag">Docker</span><span class="ptag">Pytest</span><span class="ptag">Python</span>
+          </div>
+          <a href="https://github.com/prathikbsgowda/churn_api_project" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-top">🔬</div>
+        <div class="project-body">
+          <h3>Kinase-Substrate Network Visualization</h3>
+          <p>Web tool visualizing kinase-substrate networks with Cytoscape.js and downloadable graph images.</p>
+          <div class="project-tags">
+            <span class="ptag">JavaScript</span><span class="ptag">Cytoscape.js</span><span class="ptag">Bioinformatics</span>
+          </div>
+          <a href="https://github.com/prathikbsgowda/cytoscape_network_generator" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="container">
+    <div class="section-header reveal">
+
+      <h2 class="section-title">Research Publications</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="pub-list">
+
+      <div class="pub-item reveal">
+        <span class="pub-year">2025</span>
+        <h3 class="pub-title">Orchestrating intracellular calcium signaling Cascades by Phosphosite-Centric regulatory network: A comprehensive analysis on kinases CAMKK1 and CAMKK2</h3>
+        <p class="pub-authors">Althaf Mahin, Athira Perunelly Gopalakrishnan, Mukhtar Ahmed, Mahammed Nisar, Levin John, <b>Prathik Basthikoppa Shivamurthy</b>, et al.</p>
+        <p class="pub-journal">OMICS: A Journal of Integrative Biology</p>
+        <a href="https://www.liebertpub.com/doi/abs/10.1089/omi.2024.0196" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> View Publication</a>
+      </div>
+
+      <div class="pub-item reveal">
+        <span class="pub-year">2025</span>
+        <h3 class="pub-title">Positional distribution and conservation of major phosphorylated sites in the human kinome</h3>
+        <p class="pub-authors">Athira Perunelly Gopalakrishnan, <b>Prathik Basthikoppa Shivamurthy</b>, Mukhtar Ahmed, et al.</p>
+        <p class="pub-journal">Frontiers in Molecular Biosciences</p>
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12015135/" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> View Publication</a>
+      </div>
+
+      <div class="pub-item reveal">
+        <span class="pub-year">2025</span>
+        <h3 class="pub-title">Theranostic Target NSUN2, a C(5)-Methyltransferase, Phospho-Regulatory Network Uncovered with Systematic Assembly of 805 Datasets</h3>
+        <p class="pub-authors">Fathimathul Lubaba, Mejo George, Mukhtar Ahmed, <b>Prathik Basthikoppa Shivamurthy</b>, et al.</p>
+        <p class="pub-journal">OMICS: A Journal of Integrative Biology</p>
+        <a href="https://www.liebertpub.com/doi/abs/10.1089/omi.2025.0025" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> View Publication</a>
+      </div>
+
+      <div class="pub-item reveal">
+        <span class="pub-year">2025</span>
+        <h3 class="pub-title">Kinase regulation of DNA polymerase alpha-primase (polα-primase) complex: Inference from decade-long global phosphoproteomes</h3>
+        <p class="pub-authors">Aromal Monipillil Ajayakumar, Athira Perunelly Gopalakrishnan, <b>Prathik Basthikoppa Shivamurthy</b>, et al.</p>
+        <p class="pub-journal">Elsevier</p>
+        <a href="https://www.sciencedirect.com/science/article/abs/pii/S2452014425001852" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> View Publication</a>
+      </div>
+
+      <div class="pub-item reveal">
+        <span class="pub-year">2025</span>
+        <h3 class="pub-title">Phosphoproteomic insights into GFPT2-Associated cellular phospho-signaling networks</h3>
+        <p class="pub-authors">Shuvechha Chakraborty, Althaf Mahin, <b>Prathik Basthikoppa Shivamurthy</b>, et al.</p>
+        <p class="pub-journal">Biochemistry and Biophysics Reports</p>
+        <a href="https://www.sciencedirect.com/science/article/pii/S2405580825002833" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> View Publication</a>
+      </div>
+
+      <div class="pub-item reveal">
+        <span class="pub-year">2025</span>
+        <h3 class="pub-title">Decoding ATXN2 Phosphocode: Structural Insights and Therapeutic Opportunities in Disease</h3>
+        <p class="pub-authors">Apoorva Pai Kalasa Anil Kumar, Suhail Subair, <b>Prathik Basthikoppa Shivamurthy</b>, et al.</p>
+        <p class="pub-journal">Springer US</p>
+        <a href="https://link.springer.com/article/10.1007/s10930-025-10287-4" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> View Publication</a>
+      </div>
+
+      <div class="pub-item reveal">
+        <span class="pub-year">2025</span>
+        <h3 class="pub-title">Mapping Cophosphoregulation Networks Linked to Transcriptional Regulator Bromodomain-Containing Protein 4</h3>
+        <p class="pub-authors">Anjana C Lalu, Fathimathul Lubaba, <b>Prathik Basthikoppa Shivamurthy</b>, et al.</p>
+        <p class="pub-journal">DNA and Cell Biology</p>
+        <a href="https://www.liebertpub.com/doi/abs/10.1089/dna.2025.0088" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> View Publication</a>
+      </div>
+
+      <div class="pub-item reveal">
+        <span class="pub-year">2025</span>
+        <h3 class="pub-title">Unravelling the phosphoregulatory network of protein kinase C-delta (PKC-δ)</h3>
+        <p class="pub-authors">Darshan Hebbal Raghu, Leona Dcunha, <b>Prathik Basthikoppa Shivamurthy</b>, et al.</p>
+        <p class="pub-journal">Elsevier</p>
+        <a href="https://www.sciencedirect.com/science/article/abs/pii/S1570963925000184" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> View Publication</a>
+      </div>
+
+      <div class="pub-item reveal">
+        <span class="pub-year">2024</span>
+        <h3 class="pub-title">Elucidating the phosphoregulatory network of predominant phosphosite in AXL kinase: An integrative bioinformatic approach</h3>
+        <p class="pub-authors">Levin John, Mejo George, <b>Prathik Basthikoppa Shivamurthy</b>, et al.</p>
+        <p class="pub-journal">Springer</p>
+        <a href="https://link.springer.com/article/10.1007/s42485-024-00147-7" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> View Publication</a>
+      </div>
+
+      <div class="pub-item reveal">
+        <span class="pub-year">2024</span>
+        <h3 class="pub-title">A global phosphosite-correlated network map of Thousand And One Kinase 1 (TAOK1)</h3>
+        <p class="pub-authors">Pahal Priyanka, Athira Perunelly Gopalakrishnan, <b>Prathik Basthikoppa Shivamurthy</b>, et al.</p>
+        <p class="pub-journal">ScienceDirect</p>
+        <a href="https://www.sciencedirect.com/science/article/abs/pii/S1357272524000499" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> View Publication</a>
+      </div>
+
+      <div class="pub-item reveal">
+        <span class="pub-year">2023</span>
+        <h3 class="pub-title">Crop Maturity Detection and Automatic Sprinkler Irrigation using IoT and Machine Learning</h3>
+        <p class="pub-authors">Vijendra, Manjula Basava Raj, Akshay, Charan, <b>Prathik B S</b></p>
+        <p class="pub-journal">HBRP</p>
+        <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> View Publication</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-header reveal">
+
+      <h2 class="section-title">Certifications</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card reveal">
+        <div class="cert-icon">🗄️</div>
+        <div>
+          <h3>SQL (Advanced)</h3>
+          <p>HackerRank</p>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🎓</div>
+        <div>
+          <h3>Introduction to Data Science in Python</h3>
+          <p>University of Michigan</p>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">📊</div>
+        <div>
+          <h3>Tableau Training</h3>
+          <p>Simplilearn</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-header reveal">
+
+      <h2 class="section-title">Education</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-icon">🎓</div>
+      <div class="edu-info">
+        <h3>Bachelor of Information Science and Engineering</h3>
+        <p>Visvesvaraya Technological University</p>
+
+      </div>
+      <span class="edu-date">2019 – 2023</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Location</h3>
+        <p>Shimoga, Karnataka, India</p>
+      </div>
+      <div class="contact-card reveal">
+        <i class="fas fa-envelope"></i>
+        <h3>Email</h3>
+        <p>prathikbsgowda@gmail.com</p>
+      </div>
+      <div class="contact-card reveal">
+        <i class="fas fa-phone"></i>
+        <h3>Phone</h3>
+        <p>+91 9482810657</p>
+      </div>
+    </div>
+    <div class="socials reveal">
+      <a href="https://linkedin.com/in/prathik-b-s-a80b3521a" class="social-btn" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/prathikbsgowda" class="social-btn" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="mailto:prathikbsgowda@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 Prathik B S. All rights reserved.</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+<script src="script.js"></script>
 </body>
 </html>
